@@ -57,6 +57,43 @@ class matrix_arithmetic:
         else :
             m1=np.array(data).reshape((n,m))*k
             print(m1)
+    def det(self):
+        n=int(input("Enter size of the matrix: "))
+        data=np.array(list(map(int,input("Enter Elements of the matrix: ").split())))
+        if len(data)!=n*n:
+            print("Invalid Input.")
+        else :
+            m1=data.reshape((n,n))
+            result=np.linalg.det(m1)
+            print(result)
+    def inverse(self):
+        n=int(input("Enter size of the matrix: "))
+        data=np.array(list(map(int,input("Enter Elements of the matrix: ").split())))
+        if len(data)!=n*n or np.linalg.det(data.reshape((n,n)))== 0 :
+            print("Invalid Input.")
+        else :
+            m1=data.reshape((n,n))
+            result=np.linalg.inv(m1)
+            print(result)
+    def rank(self):
+        n=int(input("Enter rows: "))
+        m=int(input("Enter columns: "))
+        data=np.array(list(map(int,input("Enter Elements of the matrix: ").split())))
+        if len(data)!=n*m:
+            print("Invalid Input.")
+        else :
+            m1=data.reshape((n,m))
+            result=np.linalg.matrix_rank(m1)
+            print(result)
+    def trace(self):
+        n=int(input("Enter size: "))
+        data=np.array(list(map(int,input("Enter Elements of the matrix: ").split())))
+        if len(data)!=n*n:
+            print("Invalid Input.")
+        else :
+            m1=data.reshape((n,n))
+            result=np.trace(m1)
+            print(result)
 
 def main():
     cal=matrix_arithmetic()
@@ -69,8 +106,12 @@ def main():
 3.Scalar Multiplication of Matrix
 4.Matrix Multiplication
 5.Transpose of Matrix
-6.Exit""") 
-    choice = int(input("Enter Your Choice(1/2/3/4/5/6): "))
+6.Determinat of Matrix
+7.Trace of Matrix
+8.Rank of Matrix
+9.Inverse  of Matrix
+10.Exit""") 
+    choice = int(input("Enter Your Choice(1/2/3/4/5/6/7/8/9/10): "))
     if choice == 1:
         cal.addition()
     elif choice == 2:
@@ -82,6 +123,14 @@ def main():
     elif choice == 5:
         cal.transpose()
     elif choice == 6:
+        cal.det()
+    elif choice == 7:
+        cal.trace()
+    elif choice == 8:
+        cal.rank()
+    elif choice == 9:
+        cal.inverse()
+    elif choice == 10:
         print("Successfully out of the system.")
         return 
     else :

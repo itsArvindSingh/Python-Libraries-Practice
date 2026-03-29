@@ -1,0 +1,11 @@
+import numpy as np
+def trace():
+    n=int(input("Enter size: "))
+    data=np.array(list(map(int,input("Enter Elements of the matrix: ").split())))
+    if len(data)!=n*n:
+        print("Invalid Input.")
+    else :
+        m1=data.reshape((n,n))
+        result=np.trace(m1)
+        print(result)
+trace()
