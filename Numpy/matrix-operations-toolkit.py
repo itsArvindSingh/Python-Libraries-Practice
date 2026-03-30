@@ -40,7 +40,7 @@ class matrix_arithmetic:
     def transpose(self):
         n = int(input("Enter rows: "))
         m = int(input("Enter columns: "))
-        data=list(map(int,input().split()))
+        data=list(map(int,input("Enter Elements of the matrix: ").split()))
         if len(data) != n*m :
             print("Invalid input size.")
         else :
@@ -65,6 +65,8 @@ class matrix_arithmetic:
         else :
             m1=data.reshape((n,n))
             result=np.linalg.det(m1)
+            if np.isclose(result, int(round(result))):
+                result = int(round(result))
             print(result)
     def inverse(self):
         n=int(input("Enter size of the matrix: "))
@@ -97,45 +99,49 @@ class matrix_arithmetic:
 
 def main():
     cal=matrix_arithmetic()
-    print("Matrix Operations Toolkit")
-    print("")
-    print("-------------------- Matrix Operations Toolkit --------------------")
-    print("")
-    print("""1.Matrix Addition
+    __choice="y"
+    while __choice in ("y","Y") :
+        print("Matrix Operations Toolkit")
+        print("")
+        print("-------------------- Matrix Operations Toolkit --------------------")
+        print("")
+        print("""1.Matrix Addition
 2.Matrix Subtraction
 3.Scalar Multiplication of Matrix
 4.Matrix Multiplication
 5.Transpose of Matrix
-6.Determinat of Matrix
+6.Determinant of Matrix
 7.Trace of Matrix
 8.Rank of Matrix
 9.Inverse  of Matrix
 10.Exit""") 
-    choice = int(input("Enter Your Choice(1/2/3/4/5/6/7/8/9/10): "))
-    if choice == 1:
-        cal.addition()
-    elif choice == 2:
-        cal.subtraction()
-    elif choice == 3:
-        cal.scalar_multiplication()
-    elif choice == 4:
-        cal.multiply()
-    elif choice == 5:
-        cal.transpose()
-    elif choice == 6:
-        cal.det()
-    elif choice == 7:
-        cal.trace()
-    elif choice == 8:
-        cal.rank()
-    elif choice == 9:
-        cal.inverse()
-    elif choice == 10:
-        print("Successfully out of the system.")
-        return 
+        choice = int(input("Enter Your Choice(1/2/3/4/5/6/7/8/9/10): "))
+        if choice == 1:
+            cal.addition()
+        elif choice == 2:
+            cal.subtraction()
+        elif choice == 3:
+            cal.scalar_multiplication()
+        elif choice == 4:
+            cal.multiply()
+        elif choice == 5:
+            cal.transpose()
+        elif choice == 6:
+            cal.det()
+        elif choice == 7:
+            cal.trace()
+        elif choice == 8:
+            cal.rank()
+        elif choice == 9:
+            cal.inverse()
+        elif choice == 10:
+            print("Successfully out of the system.")
+            return 
+        else :
+            print("Invalid Input.")
+        __choice=input("do you want to do more operation(y/n): ")
     else :
-        print("Invalid Input.")
-
+        print("Successfully out of the system.")
 
 if __name__ == "__main__":
     main()
